@@ -5,8 +5,7 @@ RocketChat.saveRoomDescription = function(rid, roomDescription, user) {
 			'function': 'RocketChat.saveRoomDescription'
 		});
 	}
-	const escapedRoomDescription = roomDescription;
-	const update = RocketChat.models.Rooms.setDescriptionById(rid, escapedRoomDescription);
-	RocketChat.models.Messages.createRoomSettingsChangedWithTypeRoomIdMessageAndUser('room_changed_description', rid, escapedRoomDescription, user);
+	const update = RocketChat.models.Rooms.setDescriptionById(rid, roomDescription);
+	RocketChat.models.Messages.createRoomSettingsChangedWithTypeRoomIdMessageAndUser('room_changed_description', rid, roomDescription, user);
 	return update;
 };
