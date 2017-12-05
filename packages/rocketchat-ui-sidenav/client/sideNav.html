@@ -1,16 +1,53 @@
-<template name="sideNav">
+<head>
+<style>
+	/* The customizations for the re-open navigation bar button */
+.re-open {
+    background-color: #2f343d;
+    border: none;
+    color: white;
+    padding: 5px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0px 0px;
+    cursor: pointer;
+}
+	/* The customization for the hide button to minimize the navigation bar */
+	.hide {  background-color: #2f343d;
+    border: none;
+    color: white;
+    padding: 0px 0px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 5px;
+    margin: 0px 0px;
+    cursor: pointer;
+	}
+
+</style>
+</head>
+
+<template name="sideNav" >
+<!-- A hide button to minimize the navigation bar if the user wants a clear view of the conversation -->
+<div class="hide" style="display:none" id="mySidebar">
+<button class="closing"
+onclick="Close_nav()"> &#9700; Hide</button>
+
 		<aside class="sidebar" role="navigation">
 			<header class="sidebar__header">
 				{{> accountBox }}
 				{{> toolbar}}
 			</header>
 
+
 			{{#if loggedInUser}}
 				<div class="unread-rooms background-primary-action-color color-primary-action-contrast top-unread-rooms hidden">
 					{{_ "More_unreads"}} <i class="icon-up-big"></i>
 				</div>
-				<div class="rooms-list" aria-label="{{_ "Channels"}}" role="region">
 
+				<div class="rooms-list" aria-label="{{_ "Channels"}}" role="region">
 					{{#each roomType}}
 						{{> roomList identifier=identifier label=label isCombined=isCombined header=header }}
 					{{/each}}
@@ -23,11 +60,13 @@
 				</div>
 				<div class="unread-rooms background-primary-action-color color-primary-action-contrast bottom-unread-rooms hidden">
 					{{_ "More_unreads"}} <i class="icon-down-big"></i>
+
 				</div>
 				<div class="flex-nav animated-hidden">
 					{{> Template.dynamic template=flexTemplate data=flexData }}
 				</div>
 			{{else}}
+
 				<div class="rooms-list" aria-label="{{_ "Channels"}}" role="region">
 					<div class="wrapper">
 						{{> roomList anonymous=true label="Channels" }}
@@ -40,4 +79,29 @@
 			</footer>
 		</aside>
 		<div class="sidebar-wrap"></div>
+	</div>
+	<div id="main">
+<!-- A button to bring the navigation sidebar back on the users screen for them to select channels or read messages.-->
+<div class="re-open">
+	<button id="openNav" class="w3-btn w3-round-xxxlarge" onclick="Open_nav()">&#9700;<b> Channels</b></button>
+
+</div>
+
+</div>
+
+<script>
+	// the functions for the button to hide and un-hide the side bar
+function Open_nav() {
+document.getElementById("main").style.marginLeft = "0%";
+document.getElementById("mySidebar").style.width = "25%";
+document.getElementById("mySidebar").style.display = "block";
+document.getElementById("openNav").style.display = 'none';
+}
+function Close_nav() {
+document.getElementById("main").style.marginLeft = "0%";
+document.getElementById("mySidebar").style.display = "none";
+document.getElementById("openNav").style.display = "block";
+}
+</script>
 </template>
+
