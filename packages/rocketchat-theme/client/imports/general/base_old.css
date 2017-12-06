@@ -1,3 +1,24 @@
+Skip to content
+Help save net neutrality! A free, open internet is once again at stake—and we need your help.
+Learn more  Dismiss
+This repository
+Search
+Pull requests
+Issues
+Marketplace
+Explore
+ @MrBunBuns
+ Sign out
+ Watch 1
+  Star 0  Fork 3,243 joesitton/Rocket.Chat
+forked from RocketChat/Rocket.Chat
+ Code  Pull requests 0  Projects 0  Insights
+Tree: 5286c57e94 Find file Copy pathRocket.Chat/packages/rocketchat-theme/client/imports/general/base_old.css
+5286c57  8 days ago
+@joesitton joesitton fix some isues in the progress bar
+8 contributors @karlprieb @ggazzo @rodrigok @MartinSchoeler @engelgabriel @cyclops24 @joesitton @nishimaki10
+RawBlameHistory      
+5735 lines (4195 sloc)  71.9 KB
 .rc-old .text-right {
 	text-align: right;
 }
@@ -2246,8 +2267,14 @@
 			right: 0;
 			left: 0;
 
+			overflow: hidden;
+
+			width: 50%;
+
 			height: 100%;
 			padding: 0 10px;
+
+			text-overflow: ellipsis;
 
 			& > a {
 				float: right;
@@ -2258,6 +2285,9 @@
 		}
 
 		& button {
+			position: relative;
+			z-index: 3;
+
 			float: right;
 
 			text-transform: uppercase;
@@ -3227,10 +3257,6 @@
 			list-style-type: decimal;
 		}
 
-		& > * + * {
-			padding-top: 10px;
-		}
-
 		& > table {
 			display: block;
 			overflow: auto;
@@ -3752,7 +3778,13 @@ body:not(.is-cordova) {
 	}
 
 	&.uploaded-files-list {
-		& a .file-name {
+	  	& ul {
+		  & li {
+			margin-bottom: 10px;
+		  }
+		}
+
+		& .file-name {
 			display: block;
 
 			padding: 10px 5px;
@@ -3777,19 +3809,14 @@ body:not(.is-cordova) {
 
 		& i {
 			float: left;
-
 			margin-right: 10px;
 
 			&.file-delete {
 				float: right;
-
-				padding-top: 10px;
 			}
 
 			&.file-download {
 				float: right;
-
-				padding-top: 11px;
 			}
 		}
 	}
@@ -4603,7 +4630,7 @@ body:not(.is-cordova) {
 
 .full-page,
 .page-loading {
-	background-color: var(--color-primary);
+	background-color: var(--rc-color-primary);
 }
 
 .rc-old.full-page {
@@ -5726,3 +5753,15 @@ body:not(.is-cordova) {
 		}
 	}
 }
+© 2017 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+API
+Training
+Shop
+Blog
+About
